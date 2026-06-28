@@ -15,23 +15,8 @@ Implementación de una VPN **Client-to-Site (Dial-Up)** en FortiGate usando **IK
 
 ## 🗺️ Topología de Red
 
-```
-  [Cliente Windows]          [Cliente Linux]
-  FortiClient               vpnc
-        \                      /
-         \   Internet/ISP     /
-          \                  /
-     ====[ FGT-A port1: 20.25.1.2/30 ]====
-                  |
-           FGT-A (FortiGate)
-           VPN-DialUp: IKEv1 Aggressive
-           Pool: 172.16.1.10 – 172.16.1.100
-                  |
-           port2: 14.2.10.254/24
-                  |
-            [LAN Interna]
-            14.2.10.0/24
-```
+<img width="1492" height="577" alt="image" src="https://github.com/user-attachments/assets/4dd14708-fbde-4b50-bde1-581d77e808b0" />
+
 
 ---
 
