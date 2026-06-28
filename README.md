@@ -27,6 +27,7 @@ Implementación de una VPN **Client-to-Site (Dial-Up)** en FortiGate usando **IK
 | FGT-A            | port1 (WAN)     | 20.25.1.2 /30           | Enlace hacia ISP                  |
 | FGT-A            | port2 (LAN)     | 14.2.10.254 /24         | Red interna                       |
 | ISP Router       | e0/0            | 20.25.1.1 /30           | Gateway FGT-A                     |
+| ISP Router       | e0/2            | 192.168.100.1 /25       | Gateway FGT-A                     |
 | Clientes VPN     | Asignada        | 172.16.1.10 – .100 /24  | Pool Mode-Config (Dial-Up)        |
 
 ---
