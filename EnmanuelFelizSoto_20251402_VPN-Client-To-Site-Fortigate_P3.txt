@@ -1,0 +1,71 @@
+Agregar esto a la porción del script del site to site. 
+
+# ====================================================================
+# FORTIGATE CLIENT-TO-SITE (DIAL-UP) VPN SCRIPT
+# Compatibilidad: FortiClient (Windows) & vpnc (Linux)
+# ====================================================================
+
+# 1. Crear Usuario y Grupo local para la autenticación VPN
+config user local
+    edit "vpnuser"
+        set type password
+        set passwd "UsuarioSeguro123!"
+    next
+end
+
+config user group
+    edit "VPN_Users"
+        set member "vpnuser"
+    next
+end
+
+# 2. Configurar Fase 1 (Dial-Up)
+# - Se habilita mode-cfg para asignar IPs dinámicas a los clientes (rango 172.16.1.x)
+# - Se agrega 'dhgrp 14 5 2' para aceptar clientes Linux legacy (vpnc)
+config vpn ipsec phase1-interface
+    edit "VPN-DialUp"
+        set type dynamic
+        set interface "port1"
+        set ike-version 1
+        set peertype any
+        set net-device disable
+        set mode aggressive
+        set proposal des-md5
+        set dhgrp 14 5 2
+        set dpd on-idle
+        set xauthtype auto
+        set authusrgrp "VPN_Users"
+        set mode-cfg enable
+        set ipv4-start-ip 172.16.1.10
+        set ipv4-end-ip 172.16.1.100
+        set ipv4-netmask 255.255.255.0
+        set psksecret "ClaveDialup123!"
+    next
+end
+
+# 3. Configurar Fase 2 (Quick Mode)
+# - Se desactiva PFS (Perfect Forward Secrecy) para evitar el error 
+#   (ISAKMP_N_NO_PROPOSAL_CHOSEN) y garantizar conectividad con clientes Linux.
+config vpn ipsec phase2-interface
+    edit "VPN-DialUp-P2"
+        set phase1name "VPN-DialUp"
+        set proposal des-md5
+        set pfs disable
+    next
+end
+
+# 4. Política de Firewall 
+# - Permite el tráfico desde la interfaz virtual de la VPN hacia la LAN (port2)
+config firewall policy
+    edit 3
+        set name "DialUp_to_LAN"
+        set srcintf "VPN-DialUp"
+        set dstintf "port2"
+        set srcaddr "all"
+        set dstaddr "all"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set nat disable
+    next
+end
