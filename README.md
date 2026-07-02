@@ -76,10 +76,14 @@ Implementación de una VPN **Client-to-Site (Dial-Up)** en FortiGate usando **IK
 ## 🖥️ Evidencias de Configuración
 
 ### Figura 1 — FGT-A: Phase 1 Dial-Up (VPN-DialUp)
-![Phase 1 Dial-Up](screenshots/lab11_dialup_phase1.png)
+<img width="1520" height="492" alt="image" src="https://github.com/user-attachments/assets/c5b8b63e-f175-4f90-b639-4fdead72f3c7" />
 
 ### Figura 2 — Usuarios, Grupos y Políticas de Firewall
-![Users y Policy](screenshots/lab11_users_policy.png)
+<img width="1513" height="718" alt="image" src="https://github.com/user-attachments/assets/f49f95f7-e65d-4283-87f6-efaf64288984" />
+---
+<img width="1527" height="838" alt="image" src="https://github.com/user-attachments/assets/594c8e54-f333-42f4-8cd6-659e87c2c72d" />
+---
+
 
 ---
 
