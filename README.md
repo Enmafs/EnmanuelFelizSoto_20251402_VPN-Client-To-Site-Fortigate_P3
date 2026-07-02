@@ -224,7 +224,7 @@ ping 14.2.10.254
 |---------|--------|
 | Repositorio | [EnmanuelFelizSoto_20251402_VPN-Clientt-To-Site-Fortigate](https://github.com/Enmafs/EnmanuelFelizSoto_20251402_VPN-Clientt-To-Site-Fortigate) |
 | Repositorio padre (NetSec) | [Enmafs/NetSec](https://github.com/Enmafs/NetSec) |
-| Video demostrativo | 🎬 [Aquí](https://youtu.be/RCI8Qt6YqPU) |
+| Video demostrativo | 🎬 [Aquí](https://www.youtube.com/watch?v=3wKPt9EvgIY) |
 
 ---
 
