@@ -1,3 +1,34 @@
+#Primero preparámos el ISP de cisco. (Agregámos esta porción a la anterior de site to site.)
+
+enable 
+no ip domain-lookup
+configure terminal
+int e0/3
+Description GTW LAN CLIENTES
+ip address 192.168.100.1 255.255.255.0
+no shutdown
+exit
+
+ip access-lists extended NAT
+5 deny 14.2.0.0 0.0.0.255 14.2.0.0 0.0.0.255
+deny 192.168.100.0 0.0.0.255 14.2.10.0 0.0.0.3
+permit any any
+exit
+
+ip nat inside source list NAT interface e0/2 overload
+interface range e0/0-1,e0/3
+ip nat inside
+exit
+int e0/2
+ip nat outside
+end
+
+# Verificamos con ping 1.1.1.1
+Ping = !!!!!
+NAT UP
+Ping = .....
+NAT DOWN
+
 Agregar esto a la porción del script del site to site. 
 
 # ====================================================================
@@ -69,3 +100,9 @@ config firewall policy
         set nat disable
     next
 end
+
+
+NOTA:
+Es imperativo asignar una ip y name server a la PC client y descargar la herramienta de vpnc en caso de ser Linux (apt update && apt install vpnc). 
+Conectar con: vpnc --enable-1des
+Acciones....
